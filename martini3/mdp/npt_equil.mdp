@@ -1,0 +1,30 @@
+; 3. Equilibrate the melt with the full 20 fs MARTINI time step
+integrator               = md
+dt                       = 0.020
+nsteps                   = 100000       ; 2 ns
+nstcalcenergy            = 100
+nstenergy                = 1000
+nstlog                   = 5000
+nstxout-compressed       = 5000
+; MARTINI 3 standard non-bonded settings (Souza et al., Nat. Methods 2021; de Jong et al., CPC 2016)
+cutoff-scheme            = Verlet
+nstlist                  = 20
+pbc                      = xyz
+verlet-buffer-tolerance  = 0.005
+coulombtype              = reaction-field
+rcoulomb                 = 1.1
+epsilon_r                = 15
+epsilon_rf               = 0
+vdw_type                 = cutoff
+vdw-modifier             = Potential-shift-verlet
+rvdw                     = 1.1
+tcoupl                   = v-rescale
+tc-grps                  = System
+tau_t                    = 1.0
+ref_t                    = 450
+pcoupl                   = C-rescale
+pcoupltype               = isotropic
+tau_p                    = 4.0
+compressibility          = 3e-4
+ref_p                    = 1.0
+continuation             = yes

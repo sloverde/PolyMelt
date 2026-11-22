@@ -1,0 +1,22 @@
+;;;;; Martini 3 Force Field: the C1 bead only (all that a polyethylene melt needs)
+;;;;;
+;;;;; Excerpt of martini_v3.0.0.itp (Version 3.0.0, file updated on 2021-03-29) from
+;;;;; https://github.com/marrink-lab/martini-forcefields, Apache License 2.0
+;;;;; (see LICENSE-martini-forcefields.txt in this folder).
+;;;;; Change made for this tutorial: only the C1 bead type and its C1-C1 Lennard-Jones
+;;;;; interaction are kept; every number is copied unchanged. For any other molecule,
+;;;;; use the full martini_v3.0.0.itp from that repository.
+;;;;;
+;;;;; Please cite:
+;;;;;   PCT Souza, et al., Nat. Methods, 2021. DOI: 10.1038/s41592-021-01098-3
+
+[ defaults ]
+1 2 ; sigma-epsilon format of LJ parameters
+
+[ atomtypes ]
+; name  mass   charge  ptype  sigma  epsilon (set per pair below)
+C1 72.0 0.000 A 0.0 0.0
+
+[ nonbond_params ]
+; i     j  func  sigma (nm)      epsilon (kJ/mol)
+    C1    C1  1 4.700000e-01    3.390000e+00

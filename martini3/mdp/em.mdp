@@ -1,0 +1,17 @@
+; 1. Energy minimization: remove overlaps between the randomly grown chains
+integrator               = steep
+nsteps                   = 5000
+emtol                    = 100
+emstep                   = 0.01
+; MARTINI 3 standard non-bonded settings (Souza et al., Nat. Methods 2021; de Jong et al., CPC 2016)
+cutoff-scheme            = Verlet
+nstlist                  = 20
+pbc                      = xyz
+verlet-buffer-tolerance  = 0.005
+coulombtype              = reaction-field
+rcoulomb                 = 1.1
+epsilon_r                = 15
+epsilon_rf               = 0
+vdw_type                 = cutoff
+vdw-modifier             = Potential-shift-verlet
+rvdw                     = 1.1
