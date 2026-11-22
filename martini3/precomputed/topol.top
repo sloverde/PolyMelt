@@ -1,0 +1,64 @@
+#include "martini_v3.0.0_C1.itp"
+#include "PE_chains.itp"
+
+[ system ]
+Polydisperse polyethylene melt (MARTINI 3)
+
+[ molecules ]
+; name  number
+PE142  1
+PE88  1
+PE84  1
+PE82  1
+PE77  1
+PE75  1
+PE72  1
+PE68  3
+PE66  2
+PE64  1
+PE60  1
+PE59  1
+PE55  1
+PE54  3
+PE53  1
+PE52  2
+PE50  1
+PE49  2
+PE47  1
+PE46  2
+PE44  3
+PE43  1
+PE42  3
+PE41  1
+PE40  4
+PE39  1
+PE38  3
+PE37  1
+PE36  2
+PE34  5
+PE33  2
+PE32  4
+PE31  2
+PE30  1
+PE28  4
+PE26  8
+PE25  2
+PE24  6
+PE23  2
+PE22  9
+PE20  2
+PE18  5
+PE17  2
+PE16  11
+PE15  2
+PE14  3
+PE12  7
+PE11  2
+PE10  6
+PE8  8
+PE7  3
+PE6  11
+PE5  3
+PE4  14
+PE3  7
+PE2  22

@@ -1,0 +1,31 @@
+; Precomputed 40 ns production run (same physics as md.mdp, saved every 50 ps)
+integrator               = md
+dt                       = 0.020
+nsteps                   = 2000000      ; 40 ns precomputed run shipped with the repository
+nstcalcenergy            = 100
+nstenergy                = 1000
+nstlog                   = 10000
+nstxout-compressed       = 2500         ; 50 ps between frames
+compressed-x-precision   = 100          ; 0.01 nm, keeps the file small
+; MARTINI 3 standard non-bonded settings (Souza et al., Nat. Methods 2021; de Jong et al., CPC 2016)
+cutoff-scheme            = Verlet
+nstlist                  = 20
+pbc                      = xyz
+verlet-buffer-tolerance  = 0.005
+coulombtype              = reaction-field
+rcoulomb                 = 1.1
+epsilon_r                = 15
+epsilon_rf               = 0
+vdw_type                 = cutoff
+vdw-modifier             = Potential-shift-verlet
+rvdw                     = 1.1
+tcoupl                   = v-rescale
+tc-grps                  = System
+tau_t                    = 1.0
+ref_t                    = 450
+pcoupl                   = C-rescale
+pcoupltype               = isotropic
+tau_p                    = 4.0
+compressibility          = 3e-4
+ref_p                    = 1.0
+continuation             = yes

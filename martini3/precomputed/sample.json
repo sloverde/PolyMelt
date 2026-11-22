@@ -1,0 +1,33 @@
+{
+  "description": "Precomputed 40 ns MARTINI 3 run of the default notebook sample (CHEM 73000, Lecture 5 hands-on)",
+  "g2rins": "{[] [<]CC[>]; [>][H]; [<][H] []}|schulz_zimm(2400, 1200)|",
+  "n_chains": 200,
+  "seed": 2026,
+  "Mn_g_per_mol": 1299.5,
+  "Mw_g_per_mol": 2433.8,
+  "dispersity": 1.873,
+  "beads_total": 4643,
+  "beads_per_chain_min": 2,
+  "beads_per_chain_max": 142,
+  "model": "MARTINI 3 C1 beads, 4 CH2 groups per bead; bonds 0.47 nm (0.475 nm at chain ends), kb 3800; angles 180 deg, k 35 (G96)",
+  "temperature_K": 450,
+  "pressure_bar": 1,
+  "time_step_fs": 20,
+  "production_ns": 40,
+  "frame_interval_ps": 50,
+  "frames": 801,
+  "average_temperature_K": 449.4,
+  "final_box_nm": 8.37882,
+  "density_kg_m3_martini_mass": 943.9,
+  "density_g_cm3_real_mass": 0.736,
+  "software": "GROMACS 2023.3 (single precision, 2 CPU threads); g2rins 1.0.0",
+  "protocol": "pe_tools.build_melt (ideal chains at melt density) -> em.mdp -> npt_relax.mdp (0.5 ns, 10 fs) -> npt_equil.mdp (2 ns) -> md_precomputed.mdp (40 ns); before each grompp the structure is wrapped into the box (pe_tools.wrap_gro) and the run input is checked (pe_tools.check_tpr); trajectory unwrapped with: echo 0 | gmx trjconv -s equil.gro -f prod.xtc -o md_nojump.xtc -pbc nojump",
+  "files": {
+    "start.gro": "starting coordinates (whole chains); also numbers the chains for MDAnalysis",
+    "topol.top": "system topology (force field file: ../martini_v3.0.0_C1.itp)",
+    "PE_chains.itp": "one molecule type per chain length",
+    "chain_lengths.txt": "beads per chain in start.gro order",
+    "md_nojump.xtc": "production trajectory, unwrapped",
+    "md_precomputed.mdp": "production run parameters"
+  }
+}

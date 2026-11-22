@@ -27,7 +27,7 @@ To keep your own copy, use **File → Save a copy in Drive**.
 | C | Write the MARTINI 3 topology and pack the chains in a box | |
 | D | Minimize → relax → equilibrate → 10 ns production at 450 K; check the density | Time steps, Example 5.5 |
 | E | Spin the melt in 3D, highlight short and long chains, watch a movie, render a poster image | |
-| F | Is the melt equilibrated? R<sub>g</sub><sup>2</sup> from rod (∝ N<sup>2</sup>) to ideal coil (∝ N); centre-of-mass MSD and its local slope; middle bead vs. whole chain (Rouse τ<sup>1/2</sup>); D(N) with bootstrap errors vs. the Rouse prediction D ∝ N<sup>−1</sup> | Chain statistics and dynamics |
+| F | Is the melt equilibrated? R<sub>g</sub><sup>2</sup>(N) from rod to coil, compared with an ideal freely rotating chain (no fitting); centre-of-mass MSD and its local slope; middle bead vs. whole chain (Rouse τ<sup>1/2</sup>); D(N) with bootstrap errors vs. the Rouse prediction D ∝ N<sup>−1</sup> | Chain statistics and dynamics |
 
 Short on time? Set `use_precomputed = True` in Part D to analyze a **40 ns run of the same sample** that comes with this repository.
 

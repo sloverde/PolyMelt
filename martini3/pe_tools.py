@@ -469,6 +469,33 @@ def rg2_time(u, step: int = 5):
     return t - t[0], sizes, np.array(out)
 
 
+def bond_statistics(u, step: int = 20):
+    """Mean bond length b (nm) and mean cosine <cos psi> between consecutive bond vectors."""
+    sizes, starts = chain_info(u)
+    first = np.zeros(int(sizes.sum()) - 1, bool)          # bond k joins bead k and k+1 of the same chain
+    first[:] = True
+    first[starts[1:] - 1] = False
+    b_all, c_all = [], []
+    for ts in u.trajectory[::step]:
+        x = u.atoms.positions / 10.0
+        v = np.diff(x, axis=0)
+        bl = np.linalg.norm(v, axis=1)
+        b_all.append(bl[first].mean())
+        nxt = first[:-1] & first[1:]                       # two bonds in a row inside one chain
+        c_all.append(np.mean(np.sum(v[:-1][nxt] * v[1:][nxt], axis=1) / (bl[:-1][nxt] * bl[1:][nxt])))
+    return float(np.mean(b_all)), float(np.mean(c_all))
+
+
+def frc_rg2(n_beads, b: float, c: float):
+    """<Rg^2> (nm2) of an ideal freely rotating chain: bond length b, <cos psi> = c between neighbouring bonds."""
+    out = []
+    for N in np.atleast_1d(n_beads):
+        k = np.arange(1, int(N))
+        r2 = b * b * (k * (1 + c) / (1 - c) - 2 * c * (1 - c ** k) / (1 - c) ** 2)
+        out.append(np.sum((N - k) * r2) / N ** 2)
+    return np.array(out)
+
+
 def rg_by_chain(u, step: int = 5):
     """Time-averaged squared radius of gyration (nm2) of every chain; returns (sizes, rg2)."""
     _, sizes, rg2 = rg2_time(u, step)
